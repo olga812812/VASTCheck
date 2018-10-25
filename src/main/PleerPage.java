@@ -27,11 +27,12 @@ public class PleerPage {
 	
 	
 	
-	public void loadPageWithPleer(String pageUrl) throws Exception {	
+	public void loadPageWithPleer(String pageUrl, ClickToPlayVideo clickToPlayVideo) throws Exception {	
 		loadDriver();
 		driver.get(pageUrl);		
-		((JavascriptExecutor) driver).executeScript("scroll(0,400)");
-		Thread.sleep(10000);
+		((JavascriptExecutor) driver).executeScript("scroll(0,0)");
+		clickToPlayVideo.clickPlayInPleer(driver);
+		Thread.sleep(20000);
 		checkLogs();
 		driver.quit();
 		
