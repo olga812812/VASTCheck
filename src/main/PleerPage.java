@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,16 +25,24 @@ public class PleerPage {
     private WebDriver driver;  
     Map<String, String> adfoxRequests;
     Map<String, String> responsesForAdfoxRequests;
+    AimToBanner aimToBannerObj = new AimToBanner();
 	
 	
 	
 	public void loadPageWithPleer(String pageUrl, ClickToPlayVideo clickToPlayVideo) throws Exception {	
 		loadDriver();
+		//driver.get("https://v.adfox.ru/");
+		//Cookie cookie  = new Cookie("luid1", "g:bqnawex:g:bqnawex:a","adfox.ru","/",null,true);
+		//driver.manage().addCookie(cookie);
+		//driver.get("https://v.adfox.ru/");
+		aimToBannerObj.aimToBanner(driver);
+		/*
 		driver.get(pageUrl);		
 		((JavascriptExecutor) driver).executeScript("scroll(0,0)");
 		clickToPlayVideo.clickPlayInPleer(driver);
 		Thread.sleep(20000);
 		checkLogs();
+		*/
 		driver.quit();
 		
 	}
