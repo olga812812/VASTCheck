@@ -1,31 +1,39 @@
 package test;
 
-import main.ClickToPlayVideo;
-import main.NoClick;
-import main.PleerPage;
-import main.TvigleClickPlayInPleer;
+import main.*;
+import org.testng.annotations.*;
 
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
-public class PleerPageTests {
-	PleerPage page = new PleerPage();
+public class PleerPageTests extends BaseTest{
+	PleerPage page = new PleerPage(driver);
+	AimToBannerPage aimToBannerObj = new AimToBannerPage(driver);
 	
 	@DataProvider	
 	public Object[][] sitesList() {
 		return new Object[][] {
-				 			   //{"https://www.1tv.ru/shows/golos-7", new NoClick()}, 
-				               //{"https://www.1tv.ru", new NoClick()},
-				               //{"https://megogo.ru/ru/view/95441-zhizn-prekrasna.html", new NoClick()},
-				               {"https://www.tvigle.ru/video/intouchables/", new TvigleClickPlayInPleer()}};
+				 			 //  {"https://www.1tv.ru/shows/golos-7", new FisrtTVSitePage(driver)}, 
+				              // {"https://www.1tv.ru", new PageNoSpecialties(driver)},
+				             //  {"https://megogo.ru/ru/view/4486-priklyucheniya-krosha.html", new MegogoSitePage(driver)},
+				               {"https://www.tvigle.ru/video/intouchables/", new TvigleSitePage(driver)}};
 	}
 	
-	
-	@Test(dataProvider="sitesList")
-	public void checkVast(String siteUrl, ClickToPlayVideo clickToPlayVideo) throws Exception {		
-		page.loadPageWithPleer(siteUrl, clickToPlayVideo);
-		page.checkImpression();		
+	@BeforeTest
+    public void setUp() throws Exception {
+		aimToBannerObj.aimToBanner();	
 	}
 
+	
+	@Test(dataProvider="sitesList")
+	public void checkBanner(String siteUrl, SitePageBehavior sitePage) throws Exception {	
+			
+		page.loadPageWithPleer(siteUrl, sitePage);
+		page.checkLogs();
+		page.checkImpression();		
+	}
+	
+
+	@AfterTest
+	public void tearDown() {
+		driver.quit();
+	}
 
 }

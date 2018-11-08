@@ -5,18 +5,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class TvigleClickPlayInPleer implements ClickToPlayVideo {
+public class TvigleSitePage extends BasePage implements SitePageBehavior {
 	By vastPleerFrame = By.xpath("//iframe[@id='tvPlayerObj0']");
 	By buttonPlay = By.xpath("//div[@id='play']/i");
+	
+	public TvigleSitePage(WebDriver driver) {
+		super(driver);
+	}
 
-
-	public void clickPlayInPleer(WebDriver driver) {
+	public void clickPlayInPleer() {
 		driver.switchTo().frame(driver.findElement(vastPleerFrame));
-		WebDriverWait waitG = new WebDriverWait(driver, 10);		
-		waitG.until(ExpectedConditions.visibilityOfElementLocated(buttonPlay));
-		driver.findElement(buttonPlay).click();
-		System.out.println("Click play in pleer!!!");
-		
+		waitVisibilityOfElement(buttonPlay);
+		driver.findElement(buttonPlay).click();		
+	}
+	
+	public int getPixelsForScrollToPleer() {
+		return 0;
 	}
 
 }
