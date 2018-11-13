@@ -23,16 +23,18 @@ public class PleerPage extends BasePage {
 	
 	
 	public void loadPageWithPleer(String pageUrl, SitePageBehavior sitePage) throws Exception {	
-		stitchToPreviousTab();
+		int bannerDuration= Integer.parseInt(getProperty("bannerDuration"));
+		int loadTime=3000;
+		switchToPreviousTab();
 		driver.get(pageUrl);		
 		scrollPageToPixels(sitePage.getPixelsForScrollToPleer());
 		sitePage.clickPlayInPleer();
-		Thread.sleep(20000);
+		Thread.sleep(loadTime+bannerDuration);
 				
 		
 	}
 	
-	public void stitchToPreviousTab() {
+	public void switchToPreviousTab() {
 		ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
 		driver.switchTo().window(tabs2.get(0));	
 	}

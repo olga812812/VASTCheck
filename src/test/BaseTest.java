@@ -21,7 +21,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class BaseTest {
 	
-	static WebDriver driver = initDriver("Firefox");
+	static WebDriver driver = initDriver("Yandex");
 	
 			
 public static WebDriver initDriver(String browserName) {
@@ -38,6 +38,10 @@ public static WebDriver initDriver(String browserName) {
 		case "Opera": {
 			BasePage.setBrowser(new OperaBrowser());
 			return new OperaDriver(defineSettingForLogsOpera());
+		}
+		case "Yandex": {
+			BasePage.setBrowser(new ChromeBrowser());
+			return new ChromeDriver(defineSettingForLogsYandex());
 		}
 		default: {
 			BasePage.setBrowser(new ChromeBrowser());
@@ -80,6 +84,19 @@ public static WebDriver initDriver(String browserName) {
 		capabilities.setCapability(CapabilityType.LOGGING_PREFS, preferences);
 		OperaOptions options = new OperaOptions();
 		options.merge(capabilities);
+		return options;
+		
+	}
+	
+	public static ChromeOptions defineSettingForLogsYandex() {	
+		WebDriverManager.chromedriver().setup();
+		LoggingPreferences preferences = new LoggingPreferences();
+		preferences.enable(LogType.PERFORMANCE, Level.ALL);
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		capabilities.setCapability(CapabilityType.LOGGING_PREFS, preferences);		
+		ChromeOptions options = new ChromeOptions();
+		options.merge(capabilities);
+		options.setBinary("C:\\Users\\ovalekseeva\\AppData\\Local\\Yandex\\YandexBrowser\\Application\\browser.exe");
 		return options;
 		
 	}

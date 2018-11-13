@@ -1,5 +1,11 @@
 package main;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -31,4 +37,26 @@ public class BasePage {
 		 
 	 }
  
+	 public static String getProperty(String propertyName) {
+		 
+		 return loadProperties().getProperty(propertyName);
+		 
+	 }
+	 
+	 private static Properties loadProperties () {
+		Properties properties = new Properties();
+		InputStream stream = null;
+		InputStreamReader reader = null;
+
+		try {
+			 stream = new FileInputStream(new File("CheckVAST.properties"));
+		    reader = new InputStreamReader(stream,"Windows-1251");
+		    properties.load(reader);
+		} catch (Exception ex) {System.out.println(ex);}
+
+
+		return properties;
+
+		}
+
 }

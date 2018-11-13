@@ -12,8 +12,8 @@ public class AimToBannerPage extends BasePage {
 	}
 	
 	public void aimToBanner() throws Exception {
-		int bannerID = 2727635;
-		int campaignID = 859190;
+		String bannerID = getProperty("bannerID");
+		String campaignID = getProperty("fligthID");;
 		String  adfoxLoginPage = "https://login.adfox.ru/";
 		String bannerPage = "https://login.adfox.ru/banners.php?campaignID="+campaignID;
 		By loginField  = By.xpath("//input[@id='loginAccount']");
@@ -28,10 +28,10 @@ public class AimToBannerPage extends BasePage {
 		driver.get(adfoxLoginPage);
 		WebElement loginFieldElement  = driver.findElement(loginField);
 		loginFieldElement.clear();
-		loginFieldElement.sendKeys("imho-video");
+		loginFieldElement.sendKeys(getProperty("adfoxLogin"));
 		WebElement passwordFieldElement  = driver.findElement(passwordField);
 		passwordFieldElement.clear();
-		passwordFieldElement.sendKeys("reason-suRRouNdeD-importaNce");
+		passwordFieldElement.sendKeys(getProperty("adfoxPassword"));
 		driver.findElement(buttonLogin).click();
 		driver.get(bannerPage);
 		scrollPageToPixels(800);
