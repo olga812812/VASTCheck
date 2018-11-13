@@ -35,7 +35,7 @@ public static WebDriver initDriver(String browserName) {
 			BasePage.setBrowser(new FirefoxBrowser());
 			return new FirefoxDriver(defineSettingForLogsFirefox());
 		}
-		case "Opera": {
+		case "Opera-not set-up yet": {
 			BasePage.setBrowser(new OperaBrowser());
 			return new OperaDriver(defineSettingForLogsOpera());
 		}

@@ -13,7 +13,7 @@ public class FisrtTVSitePage extends BasePage implements SitePageBehavior{
 
 	
 	public int getPixelsForScrollToPleer() {
-		return 400;
+		return 700;
 	}
 
 }

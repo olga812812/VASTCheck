@@ -10,9 +10,9 @@ public class PleerPageTests extends BaseTest{
 	@DataProvider	
 	public Object[][] sitesList() {
 		return new Object[][] {
-				 			 //  {"https://www.1tv.ru/shows/golos-7", new FisrtTVSitePage(driver)}, 
-				              // {"https://www.1tv.ru", new PageNoSpecialties(driver)},
-				             //  {"https://megogo.ru/ru/view/4486-priklyucheniya-krosha.html", new MegogoSitePage(driver)},
+				 			   {"https://www.1tv.ru/shows/golos-7", new FisrtTVSitePage(driver)}, 
+				             //  {"https://www.1tv.ru", new PageNoSpecialties(driver)},
+				               {"https://megogo.ru/ru/view/4486-priklyucheniya-krosha.html", new MegogoSitePage(driver)},
 				               {"https://www.tvigle.ru/video/intouchables/", new TvigleSitePage(driver)}};
 	}
 	
