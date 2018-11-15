@@ -49,5 +49,9 @@ public class FirefoxBrowser implements BrowserBehavior {
 		else System.out.println("Impression is NOT here, Epic Fail!!!");
 		
 	}
+	
+    public void checkTrekers() {
+		
+	}
 
 }

@@ -14,5 +14,9 @@ public class OperaBrowser implements BrowserBehavior{
 		// TODO Auto-generated method stub
 		
 	}
+	
+    public void checkTrekers() {
+		
+	}
 
 }

@@ -18,16 +18,19 @@ public class PleerPageTests extends BaseTest{
 	
 	@BeforeTest
     public void setUp() throws Exception {
+		driver.manage().window().maximize();
 		aimToBannerObj.aimToBanner();	
 	}
 
 	
 	@Test(dataProvider="sitesList")
-	public void checkBanner(String siteUrl, SitePageBehavior sitePage) throws Exception {	
-			
+	public void checkBanner(String siteUrl, SitePageBehavior sitePage) throws Exception {
+		System.out.println("               ");
+		System.out.println("------Check site: " + siteUrl+"-----");	
 		page.loadPageWithPleer(siteUrl, sitePage);
 		page.checkLogs();
 		page.checkImpression();		
+		page.checkTrekers();
 	}
 	
 

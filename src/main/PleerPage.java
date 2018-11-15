@@ -48,4 +48,9 @@ public class PleerPage extends BasePage {
 		browser.checkImpression();
 		
 	}
+	
+	public void checkTrekers() {
+		browser.checkTrekers();
+		
+	}
 }

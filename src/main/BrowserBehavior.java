@@ -6,5 +6,6 @@ public interface BrowserBehavior {
 	
 	public void checkLogs(WebDriver driver);
 	public void checkImpression();
+	public void checkTrekers();
 
 }

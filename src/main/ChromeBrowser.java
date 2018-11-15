@@ -79,8 +79,38 @@ public class ChromeBrowser implements BrowserBehavior {
 			requestToAdfox = adfoxRequests.get(adfoxRequestId);
 			if (requestToAdfox.contains("pm=b")) impressionIsHere=true;			
 		}
+		System.out.println("-------Check Impression  and Trekers  --------");
 		if (impressionIsHere) System.out.println("OK.Impression is here");
 		else throw new NullPointerException("There is no Impression Treker!!!");
+		
+	}
+	
+	public void checkTrekers() {		
+		String requestToAdfox;	
+		Boolean trekerStart=false; 
+		Boolean trekerFristQuartille=false; 
+		Boolean trekerMidPoint=false; 
+		Boolean trekerThirdQuartille=false; 
+		Boolean trekerStop=false; 
+		for (String adfoxRequestId: adfoxRequests.keySet()) {
+			requestToAdfox = adfoxRequests.get(adfoxRequestId);
+			if (requestToAdfox.contains("pm=d")) trekerStart=true;		
+			if (requestToAdfox.contains("pm=e")) trekerFristQuartille=true;
+			if (requestToAdfox.contains("pm=f")) trekerMidPoint=true;
+			if (requestToAdfox.contains("pm=g")) trekerThirdQuartille=true;
+			if (requestToAdfox.contains("pm=h")) trekerStop=true;
+		}
+		if (trekerStart) System.out.println("trekerStart is here");
+		else throw new NullPointerException("There is no trekerStart");
+		if (trekerFristQuartille) System.out.println("trekerFristQuartille is here");
+		else throw new NullPointerException("There is no trekerFristQuartille");
+		if (trekerMidPoint) System.out.println("trekerMidPoint is here");
+		else throw new NullPointerException("There is no trekerMidPoint");
+		if (trekerThirdQuartille) System.out.println("trekerThirdQuartille is here");
+		else throw new NullPointerException("There is no trekerThirdQuartille");
+		if (trekerStop) System.out.println("trekerStop is here");
+		else throw new NullPointerException("There is no trekerStop");
+		System.out.println("-------End --------");
 		
 	}
 
